@@ -24,6 +24,7 @@ dofile("./AI/USER_AI/AI_main.lua")
 dofile("./AI/USER_AI/H_PVP_Tact.lua")
 dofile("./AI/USER_AI/H_Avoid.lua")
 dofile("./AI/USER_AI/H_Extra.lua")
+dofile("./AI/USER_AI/H_GroupTactics.lua")
 
 function WriteStartupLog(Version,ErrorCode,ErrorInfo)
 	local verspattern="%d.%d%d"
