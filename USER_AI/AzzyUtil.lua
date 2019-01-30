@@ -2364,7 +2364,7 @@ function GetHealingSkill(myid)
 			end
 			homuntype=modulo(OldHomunType,4)
 		end
-		if (skill!=MH_SILENT_BREEZE)
+		if (skill~=MH_SILENT_BREEZE) then
   		if (homuntype==1) then -- It's a lif
   			skill=HLIF_HEAL
   			if GetTick() < AutoSkillCooldown[skill] then
