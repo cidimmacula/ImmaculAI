@@ -172,7 +172,7 @@ end
 function GetGroupTact(m)
   for index, value in ipairs(MyGroupTact) do
     if(ContainsId(value[2], m)) then
-      return value[3]
+      return value[4]
     end
   end
   return nil
