@@ -1,5 +1,5 @@
 -- AzzyAI Constant File
-CVersion="1.552"
+CVersion="1.54"
 
 --[[
 function	TraceAI (string) end
@@ -497,13 +497,6 @@ MyBuffSPCost			= 0
 ComboSCTimeout=0
 ComboSVTimeout=0
 
-modtwROMoveDid =0
-modtwROAttackDid=0
-modtwROSkillGroundLV,modtwROSkillGroundID,modtwROSkillGroundX,modtwROSkillGroundY,modtwROSkillObjectLV,modtwROSkillObjectID,modtwROSkillObjectTarg,modtwROAttackTarget=0,0,0,0,0,0,0,0
-modtwROAttackTarget,modtwROMoveX,modtwROMoveY=0,0,0
-LagReductionCD =0
-
-AllTargetUnreachable=0
 
 -- These need to be globals
 Actors				= {}

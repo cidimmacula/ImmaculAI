@@ -1,5 +1,5 @@
 
-AggroHP                  = 60
+AggroHP                  = 0
 AggroSP                  = 0
 OldHomunType			= 3
 UseSkillOnly             = -1 
@@ -51,8 +51,8 @@ UseKyrieOwner            = 0
 
 
 FollowStayBack           = 2
-StationaryAggroDist      = 12
-MobileAggroDist          = 7
+StationaryAggroDist      = 15
+MobileAggroDist          = 10
 StationaryMoveBounds     = 14
 MobileMoveBounds         = 9
 DoNotUseRest             = 0
@@ -96,7 +96,7 @@ MirAIFriending           = 1
 TankMonsterLimit         = 4
 
 AssumeHomun              = 1
-AutoDetectPlant          = 1
+AutoDetectPlant          = 0
 RescueOwnerLowHP         = 0
 AttackLastFullSP         = 0
 AutoSkillLimit           = 100
@@ -107,14 +107,15 @@ ChaseSPPauseSP           = 0
 ChaseSPPauseTime         = 0
 DefensiveBuffOwnerMobbed = 0
 ForceKite                = 0
-UseBerserkMobbed         = 0
+UseBerserkMobbed         = 1
 UseBerserkSkill          = 0
-UseBerserkAttack         = 0
+UseBerserkAttack         = 1
 Berserk_SkillAlways      = 0
-Berserk_Dance            = 0
+Berserk_Dance            = 1
 Berserk_IgnoreMinSP      = 0
 PVPmode                  = 0
 ProvokeOwnerMobbed       = 0
-LastSavedDate            = "Default Configuration 1.54"
+LastSavedDate            = "01/31/2019 11:33:29 PM"
 LagReduction             = 0
-LiveMobID				 = 0
+LiveMobID                = 0
+DoNotAttackMoving        = 0

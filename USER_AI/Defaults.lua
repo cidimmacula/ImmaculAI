@@ -152,7 +152,7 @@ StickyStandby            = 1
 SpawnDelay               = 1000
 AutoSkillDelay		= 400
 ChaseGiveUp              = 6
-AttackGiveUp		=10 
+AttackGiveUp		=7 
 AtkPosbugTimeoutLimit  = 3 
 FollowTryPanic		=3 
 SphereTrackFactor	=3 
@@ -210,8 +210,9 @@ FastChangeLimit		=1
 AttackDebuffLimit	=1
 
 
-MagicNumber		=42000
-MagicNumber2		=100000
+MagicNumber		=110000000
+MagicNumber2		=2000000
+MagicNumber3		=100000000
 
 
 
@@ -250,5 +251,3 @@ LogEnable={}
 LogEnable["AAI_ERROR"]=1
 LogEnable["AAI_SKILLFAIL"]=0
 LogEnable["AAI_CLOSEST"]=0
-
-LogEnable["AAI_Lag"]=0
