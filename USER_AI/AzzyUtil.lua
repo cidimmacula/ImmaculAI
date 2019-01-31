@@ -2485,14 +2485,14 @@ function DoSkill(skill,level,target,mode,targx,targy)
 	delay=AutoSkillDelay + GetSkillInfo(skill,4,level)+GetSkillInfo(skill,5,level)*CastTimeRatio
 	AutoSkillCastTimeout=delay+GetTick()
 	if AutoSkillCooldown[skill]~=nil then
-    AutoSkillCooldown[skill]=t+GetSkillInfo(skill,9,level)+delay
+    AutoSkillCooldown[skill]=GetTick()+GetSkillInfo(skill,9,level)+delay
   elseif (skill==MH_VOLCANIC_ASH) then --handle the three ash timeouts
-    if (AshTimeout[1] < t) then
-      AshTimeout[1]=t+GetSkillInfo(skill,9,level)+delay
-    elseif (AshTimeout[2] < t) then
-      AshTimeout[2]=t+GetSkillInfo(skill,9,level)+delay
+    if (AshTimeout[1] < GetTick()) then
+      AshTimeout[1]=GetTick()+GetSkillInfo(skill,9,level)+delay
+    elseif (AshTimeout[2] < GetTick()) then
+      AshTimeout[2]=GetTick()+GetSkillInfo(skill,9,level)+delay
     else
-      AshTimeout[3]=t+GetSkillInfo(skill,9,level)+delay
+      AshTimeout[3]=GetTick()+GetSkillInfo(skill,9,level)+delay
    	end
 	end
 	delay = delay + GetSkillInfo(skill,6,level)
