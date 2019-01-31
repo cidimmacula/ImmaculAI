@@ -723,15 +723,6 @@ function	OnCHASE_ST ()
 				MyDestX,MyDestY=0,0
 		        ChaseGiveUpCount=0
 				return OnFOLLOW_ST()
-			elseif AllTargetUnreachable==1 then
-				MyState = FOLLOW_ST
-				MyDestX, MyDestY = 0,0
-				TraceAI ("CHASE_ST -> FOLLOW_ST : All targets marked unreachable, and can't reach "..MyEnemy)
-				ChaseGiveUpCount=0
-				MyEnemy = 0
-				EnemyPosX = {0,0,0,0,0,0,0,0,0,0}
-				EnemyPosY = {0,0,0,0,0,0,0,0,0,0}
-				return OnFOLLOW_ST()
 			else 
 				MyState = IDLE_ST
 				MyDestX, MyDestY = 0,0
@@ -2144,11 +2135,6 @@ function SelectEnemy(enemys,curenemy)
 				end
 			--end
 		end
-	end
-	if max_reachable==1 then
-		AllTargetUnreachable=1
-	else 
-		AllTargetUnreachable=0
 	end
 	--TraceAI("SelectEnemy returning target "..result)
 	return result
