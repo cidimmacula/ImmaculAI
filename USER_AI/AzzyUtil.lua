@@ -124,6 +124,7 @@ function 	GetTact(t,m)
 	end
 	temp=GetMyTact(e)
 	if (temp==nil) then
+    temp=GetGroupTact(e)
 		if (e >= 1324 and e <= 1363) or (e >= 1938 and e <=1946) then
 			temp=GetMyTact(13)
 			TraceAI("GetTact: No tactic "..t.." for "..e.."actor: "..m.." but it's a treasure chest.")
@@ -166,6 +167,24 @@ end
 
 function GetMyTact(m)
 	return MyTact[m]
+end
+
+function GetGroupTact(m)
+  for index, value in ipairs(MyGroupTact) do
+    if(ContainsId(value[2], m)) then
+      return value[4]
+    end
+  end
+  return nil
+end
+
+function ContainsId(list, m)
+  for index, value in ipairs(list) do
+    if(value == m) then
+      return true
+    end
+  end
+  return false
 end
 
 function	GetPVPTact(t,m)
