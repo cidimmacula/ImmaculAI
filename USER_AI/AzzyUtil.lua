@@ -1726,35 +1726,35 @@ function GetSAtkSkill(myid)
 			if htype==EIRA and UseEiraEraseCutter==1 then
 				skill=MH_ERASER_CUTTER
 				if EiraEraseCutterLevel==nil then
-					level=4
+          level=SkillList[EIRA][MH_ERASER_CUTTER ]
 				else
 					level=EiraEraseCutterLevel
 				end
 			elseif htype==BAYERI and UseBayeriStahlHorn==1 then
 				skill=MH_STAHL_HORN
 				if BayeriStahlHornLevel==nil then
-					level=5
+        level=SkillList[BAYERI][MH_STAHL_HORN ]
 				else
 					level=BayeriStahlHornLevel
 				end
 			elseif htype==SERA and UseSeraParalyze==1 then
 				skill=MH_NEEDLE_OF_PARALYZE
 				if SeraParalyzeLevel==nil then
-					level=5
+        level=SkillList[SERA][MH_NEEDLE_OF_PARALYZE ]
 				else
 					level=SeraParalyzeLevel
 				end
 			elseif htype==ELEANOR and UseEleanorSonicClaw==1 and ( EleanorMode==0 or EleanorDoNotSwitchMode==1 ) then
 				skill=MH_SONIC_CRAW
 				if EleanorSonicClawLevel==nil then
-					level=5
+        level=SkillList[ELEANOR][MH_SONIC_CRAW ]
 				else
 					level=EleanorSonicClawLevel
 				end
 			elseif htype==ELEANOR and UseEleanorTinderBreaker==1 and EleanorMode==1 then
 				skill=MH_TINDER_BREAKER
 				if EleanorTinderBreakerLevel==nil then
-					level=5
+        level=SkillList[ELEANOR][MH_TINDER_BREAKER ]
 				else
 					level=EleanorTinderBreakerLevel
 				end
@@ -1772,19 +1772,19 @@ function GetComboSkill(myid)
 	local level = 0
 	if (IsHomun(myid)==1) then
 		htype=GetV(V_HOMUNTYPE,myid)
-		if htype==ELEANOR and MySpheres > AutoComboSpheres then
+    if htype==ELEANOR then
 			if EleanorMode==0 or EleanorDoNotSwitchMode==1 then
-				if ComboSCTimeout > GetTick() then
+        if ComboSCTimeout > GetTick() and MySpheres >= AutoComboSpheres then
 					skill=MH_SILVERVEIN_RUSH
 					if EleanorSilverveinLevel==nil then
-						level=5
+            level=SkillList[ELEANOR][MH_SILVERVEIN_RUSH ]
 					else
 						level=EleanorSilverveinLevel
 					end
 				elseif ComboSVTimeout > GetTick() then
 					skill=MH_MIDNIGHT_FRENZY
 					if EleanorMidnightLevel==nil then
-						level=5
+            level=SkillList[ELEANOR][MH_MIDNIGHT_FRENZY ]
 					else
 						level=EleanorMidnightLevel
 					end
@@ -1803,26 +1803,30 @@ function GetGrappleSkill(myid)
 	local level = 0
 	if (IsHomun(myid)==1) then
 		htype=GetV(V_HOMUNTYPE,myid)
-		if htype==ELEANOR and MySpheres > AutoComboSpheres then
+    if htype==ELEANOR and MySpheres >= AutoComboSpheres then
 			if EleanorMode==1 or EleanorDoNotSwitchMode==1 then
 				if ComboSCTimeout > GetTick() then
+          if MySpheres >= AutoComboSpheres -1 then
 					skill=MH_CBC
 					if EleanorCBCLevel==nil then
-						level=5
+              level=SkillList[ELEANOR][MH_CBC ]
 					else
 						level=EleanorCBCLevel
 					end
-				elseif ComboSVTimeout < GetTick() then
+          end
+        elseif ComboSVTimeout > GetTick() then
+          if MySpheres >= AutoComboSpheres -1 then
 					skill=MH_EQC
 					if EleanorEQCLevel==nil then
-						level=5
+              level=SkillList[ELEANOR][MH_EQC ]
 					else
 						level=EleanorEQCLevel
 					end
-				else
+          end
+        elseif MySpheres >= AutoComboSpheres then
 					skill=MH_TINDER_BREAKER
 					if EleanorTinderBreakerLevel==nil then
-						level=5
+            level=SkillList[ELEANOR][MH_TINDER_BREAKER ]
 					else
 						level=EleanorTinderBreakerLevel
 					end				
@@ -1903,11 +1907,20 @@ function GetDebuffSkill(myid)
 		if GetV(V_HOMUNTYPE,MyID)==EIRA and UseEiraSilentBreeze==1 then
 			skill=MH_SILENT_BREEZE
 			if EiraSilentBreezeLevel==nil then
-				level=5
+        level=SkillList[EIRA][MH_SILENT_BREEZE ]
 			else
 				level=EiraSilentBreezeLevel
 			end
 			return skill,level
+    elseif GetV(V_HOMUNTYPE,MyID)==DIETER and UseDieterVolcanicAsh==1 then
+      skill=MH_VOLCANIC_ASH
+      level=SkillList[DIETER][MH_VOLCANIC_ASH ]
+      local t = GetTick()
+      if (AshTimeout[1] < t or AshTimeout[2] < t or AshTimeout[3] < t) then
+        return skill,level
+      else
+        return 0,0
+      end
 		end
 	else
 		for i,v in ipairs(DebuffSkillList) do
@@ -1981,28 +1994,28 @@ function GetMobSkill(myid)
 			if htype==EIRA and UseEiraXenoSlasher==1 then
 				skill=MH_XENO_SLASHER
 				if EiraXenoSlasherLevel==nil then
-					level=4
+          level=SkillList[EIRA][MH_XENO_SLASHER ]
 				else
 					level=EiraXenoSlasherLevel
 				end
 			elseif htype==BAYERI and UseBayeriHailegeStar==1 then
 				skill=MH_HEILIGE_STANGE
 				if BayeriHailegeStarLevel==nil then
-					level=5
+        level=SkillList[BAYERI][MH_HEILIGE_STANGE ]
 				else
 					level=BayeriHailegeStarLevel
 				end
 			elseif htype==SERA and UseSeraPoisonMist==1 and PoisonMistMode==0 then
 				skill=MH_POISON_MIST
 				if SeraPoisonMistLevel==nil then
-					level=5
+        level=SkillList[SERA][MH_POISON_MIST ]
 				else
 					level=SeraPoisonMistLevel
 				end
 			elseif htype==DIETER and UseDieterLavaSlide==1 and LavaSlideMode==0 then
 				skill=MH_LAVA_SLIDE
 				if DieterLavaSlideLevel==nil then
-					level=5
+        level=SkillList[DIETER][MH_LAVA_SLIDE ]
 				else
 					level=DieterLavaSlideLevel
 				end
@@ -2075,11 +2088,11 @@ function	GetSOffensiveSkill(myid)
 		htype=GetV(V_HOMUNTYPE,myid)
 		if (htype==BAYERI and UseBayeriAngriffModus~=0) then
 			skill=MH_ANGRIFFS_MODUS
-			level = 5
+      level = SkillList[BAYERI][MH_ANGRIFFS_MODUS ]
 			skillopt=UseBayeriAngriffModus
 		elseif	(htype==DIETER and UseDieterMagmaFlow~=0) then
 			skill=MH_MAGMA_FLOW
-			level = 5
+      level = SkillList[DIETER][MH_MAGMA_FLOW ]
 			skillopt=UseDieterMagmaFlow
 		end
 		return skill,level,skillopt
@@ -2102,11 +2115,11 @@ function	GetSDefensiveSkill(myid)
 		htype=GetV(V_HOMUNTYPE,myid)
 		if (htype==BAYERI and UseBayeriGoldenPherze~=0) then
 			skill=MH_GOLDENE_FERSE
-			level = 5
+      level = SkillList[BAYERI][MH_GOLDENE_FERSE ]
 			skillopt=UseBayeriGoldenPherze
 		elseif	(htype==DIETER and UseDieterGraniticArmor~=0) then
 			skill=MH_GRANITIC_ARMOR
-			level = 5
+      level = SkillList[DIETER][MH_GRANITIC_ARMOR ]
 			skillopt=UseDieterGraniticArmor
 		end
 		return skill,level,skillopt
@@ -2130,11 +2143,11 @@ function	GetSOwnerBuffSkill(myid)
 		htype=GetV(V_HOMUNTYPE,myid)
 		if (htype==EIRA and UseEiraOveredBoost~=0) then
 			skill=MH_OVERED_BOOST
-			level = 5
+      level = SkillList[EIRA][MH_OVERED_BOOST ]
 			skillopt=UseEiraOveredBoost
 		elseif	(htype==DIETER and UseDieterPyroclastic~=0) then
 			skill=MH_PYROCLASTIC
-			level = 5
+      level = SkillList[DIETER][MH_PYROCLASTIC ]
 			skillopt=UseDieterPyroclastic
 		end
 		return skill,level,skillopt
@@ -2158,11 +2171,11 @@ function GetSightOrAoE(myid)
 		htype=GetV(V_HOMUNTYPE,myid)
 		if	(htype==DIETER and UseDieterLavaSlide==1 and LavaSlideMode~=0) then
 			skill=MH_LAVA_SLIDE
-			level = 5
+      level = SkillList[DIETER][MH_LAVA_SLIDE ]
 			skillopt=LavaSlideMode
 		elseif (htype==SERA and PoisonMistMode~=0 and UseSeraPoisonMist==1) then
 			skill=MH_POISON_MIST
-			level = 5
+      level = SkillList[SERA][MH_POISON_MIST ]
 			skillopt=PoisonMistMode
 		end
 	else
@@ -2247,7 +2260,7 @@ function	GetDefensiveOwnerSkill(myid)
 	local skillopt = 0
 	if (IsHomun(myid)==1) then
 		if GetV(V_HOMUNTYPE,MyID)==SERA and UseSeraPainkiller~=0 then
-			level=5
+      level=SkillList[SERA][MH_PAIN_KILLER]
 			return MH_PAIN_KILLER,level,UseSeraPainkiller
 		else
 			return 0,0,0
@@ -2291,34 +2304,32 @@ function GetHealingSkill(myid)
 		else --If it's a homun S, get the OldHomunType
 			if homuntype == EIRA and HealOwnerBreeze == 1 then --Handling for Eira silent breeze
 				skill=MH_SILENT_BREEZE
-				if GetTick() < AutoSkillCooldown[skill] then
-					level=0
-				else
-					level=5
-				end
+        level=SkillList[EIRA][MH_SILENT_BREEZE ]
 				return skill,level
 			end
 			homuntype=modulo(OldHomunType,4)
 		end
-		if (homuntype==1) then -- It's a lif
-			skill=HLIF_HEAL
-			if GetTick() < AutoSkillCooldown[skill] then
-				level=0
-			elseif (LifHealLevel==nil) then
-				level=5
-			else
-				level=LifHealLevel
-			end
-		elseif homuntype==0 then -- It's a vani
-			skill=HVAN_CHAOTIC
-			if GetTick() < AutoSkillCooldown[skill] then
-				level=0
-			elseif (VaniChaoticLevel==nil) then
-				level=3
-			else
-				level=VaniChaoticLevel
-			end
-		end
+    if (skill~=MH_SILENT_BREEZE) then
+  		if (homuntype==1) then -- It's a lif
+  			skill=HLIF_HEAL
+  			if GetTick() < AutoSkillCooldown[skill] then
+  				level=0
+  			elseif (LifHealLevel==nil) then
+  				level=5
+  			else
+  				level=LifHealLevel
+  			end
+  		elseif homuntype==0 then -- It's a vani
+  			skill=HVAN_CHAOTIC
+  			if GetTick() < AutoSkillCooldown[skill] then
+  				level=0
+  			elseif (VaniChaoticLevel==nil) then
+  				level=3
+  			else
+  				level=VaniChaoticLevel
+  			end
+  		end
+    end
 	else
 		--currently no merc healing skills
 	end
@@ -2474,7 +2485,15 @@ function DoSkill(skill,level,target,mode,targx,targy)
 	delay=AutoSkillDelay + GetSkillInfo(skill,4,level)+GetSkillInfo(skill,5,level)*CastTimeRatio
 	AutoSkillCastTimeout=delay+GetTick()
 	if AutoSkillCooldown[skill]~=nil then
-		AutoSkillCooldown[skill]=GetTick()+GetSkillInfo(skill,9,level)+delay
+    AutoSkillCooldown[skill]=t+GetSkillInfo(skill,9,level)+delay
+  elseif (skill==MH_VOLCANIC_ASH) then --handle the three ash timeouts
+    if (AshTimeout[1] < t) then
+      AshTimeout[1]=t+GetSkillInfo(skill,9,level)+delay
+    elseif (AshTimeout[2] < t) then
+      AshTimeout[2]=t+GetSkillInfo(skill,9,level)+delay
+    else
+      AshTimeout[3]=t+GetSkillInfo(skill,9,level)+delay
+   	end
 	end
 	delay = delay + GetSkillInfo(skill,6,level)
 	AutoSkillTimeout=GetTick()+delay
@@ -2484,17 +2503,32 @@ function DoSkill(skill,level,target,mode,targx,targy)
 		TraceAI("DoSkill: "..skill.." level:"..level.." target:"..target.." mode:"..targetmode.." delay "..delay)
 	end
 	if skill==MH_MIDNIGHT_FRENZY then
-		MySpheres = MySpheres - 2
+    MySpheres = math.max(0,MySpheres - 2)
 		ComboSVTimeout=0
 		UpdateTimeoutFile()
 	elseif skill==MH_SILVERVEIN_RUSH then
 		ComboSVTimeout=GetTick()+2000
 		ComboSCTimeout=0
-		MySpheres = MySpheres - 1
+    MySpheres = math.max(0,MySpheres - 1)
 		UpdateTimeoutFile()
 	elseif skill==MH_SONIC_CRAW then
 		ComboSCTimeout=GetTick()+2000
 		ComboSVTimeout=0
+  elseif skill==MH_TINDER_BREAKER then
+    ComboSCTimeout=GetTick()+2000
+    ComboSVTimeout=0
+    MySpheres = math.max(0,MySpheres - 1)
+  elseif skill==MH_CBC then
+    ComboSVTimeout=GetTick()+2000
+    ComboSCTimeout=0
+    MySpheres = math.max(0,MySpheres - 1)
+  elseif skill==MH_EQC then
+    ComboSVTimeout=0
+    ComboSCTimeout=0
+    --No sphere use?
+  else --Combo wasn't used, so kill the timeouts
+    ComboSCTimeout=0
+    ComboSVTimeout=0
 	end
 	TraceAI("DoSkill: "..skill.." level:"..level.." target:"..target.." mode:"..targetmode.." delay "..delay)
 	logappend("AAI_SKILLFAIL", "DoSkill: "..skill.." level:"..level.." target:"..target.." mode:"..targetmode.." delay "..delay)
