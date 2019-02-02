@@ -1766,7 +1766,7 @@ function GetSAtkSkill(myid)
 			return skill,level
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetComboSkill(myid)
@@ -1797,7 +1797,7 @@ function GetComboSkill(myid)
 			return skill,level
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetGrappleSkill(myid)
@@ -1839,7 +1839,7 @@ function GetGrappleSkill(myid)
 			return skill,level
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetAtkSkill(myid)
@@ -1885,12 +1885,12 @@ function GetAtkSkill(myid)
 			end
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetPushbackSkill(myid)
 	if (IsHomun(myid)==1) then
-		return 0,0
+		return 0,1
 	else
 		for i,v in ipairs(PushSkillList) do
 			level = SkillList[MercType][v]
@@ -1900,7 +1900,7 @@ function GetPushbackSkill(myid)
 			end
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 
@@ -1921,7 +1921,7 @@ function GetDebuffSkill(myid)
       if (AshTimeout[1] < t or AshTimeout[2] < t or AshTimeout[3] < t) then
         return skill,level
       else
-        return 0,0
+        return 0,1
       end
 		end
 	else
@@ -1933,7 +1933,7 @@ function GetDebuffSkill(myid)
 			end
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetMinionSkill(myid)
@@ -1961,19 +1961,19 @@ function GetMinionSkill(myid)
 			return skill,level
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetProvokeSkill(myid)
 	if (IsHomun(myid)==1) then
-		return 0,0
+		return 0,1
 	else
 		level=SkillList[MercType][MER_PROVOKE]
 		if level ~=nil then
 			return MER_PROVOKE,level
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetSacrificeSkill(myid)
@@ -1981,7 +1981,7 @@ function GetSacrificeSkill(myid)
 	if level ~=nil then
 		return ML_DEVOTION,level
 	end
-	return 0,0
+	return 0,1
 end
 
 function GetMobSkill(myid)
@@ -2039,7 +2039,7 @@ function GetMobSkill(myid)
 			end
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 
@@ -2134,7 +2134,7 @@ function	GetSDefensiveSkill(myid)
 		end
 		return skill,level,UseKyrieSelf
 	end
-	return 0,0,0
+	return 0,1,0
 end
 
 function	GetSOwnerBuffSkill(myid)
@@ -2162,7 +2162,7 @@ function	GetSOwnerBuffSkill(myid)
 		end
 		return skill,level,UseIncAgiSelf
 	end
-	return 0,0,0
+	return 0,1,0
 end
 
 function GetSightOrAoE(myid)
@@ -2237,7 +2237,7 @@ function	GetGuardSkill(myid)
 			end
 		end
 	end
-	return 0,0
+	return 0,1
 end
 
 function	GetOffensiveOwnerSkill(myid)
@@ -2245,7 +2245,7 @@ function	GetOffensiveOwnerSkill(myid)
 	local skill = 0
 	local skillopt = 0
 	if (IsHomun(myid)==1) then
-		return 0,0,0
+		return 0,1,0
 	else
 		level=SkillList[MercType][MER_BLESSING]
 		if level~=nil then
@@ -2265,7 +2265,7 @@ function	GetDefensiveOwnerSkill(myid)
       level=SkillList[SERA][MH_PAIN_KILLER]
 			return MH_PAIN_KILLER,level,UseSeraPainkiller
 		else
-			return 0,0,0
+			return 0,1,0
 		end
 	else
 		level=SkillList[MercType][MER_KYRIE]
@@ -2282,7 +2282,7 @@ function	GetOtherOwnerSkill(myid)
 	local skill = 0
 	local skillopt = 0
 	if (IsHomun(myid)==1) then
-		return 0,0,0
+		return 0,1,0
 	else
 		level=SkillList[MercType][MER_INCAGI]
 		if level~=nil then
@@ -2304,34 +2304,30 @@ function GetHealingSkill(myid)
 		if htype < 17 then --if it's not a homun S just run it through modulo. 
 			homuntype=modulo(GetV(V_HOMUNTYPE,myid),4)
 		else --If it's a homun S, get the OldHomunType
-			if homuntype == EIRA and HealOwnerBreeze == 1 then --Handling for Eira silent breeze
-				skill=MH_SILENT_BREEZE
-        level=SkillList[EIRA][MH_SILENT_BREEZE ]
-				return skill,level
+			if htype == EIRA and HealOwnerBreeze == 1 then --Handling for Eira silent breeze
+				return MH_SILENT_BREEZE,5
 			end
 			homuntype=modulo(OldHomunType,4)
 		end
-    if (skill~=MH_SILENT_BREEZE) then
-  		if (homuntype==1) then -- It's a lif
-  			skill=HLIF_HEAL
-  			if GetTick() < AutoSkillCooldown[skill] then
-  				level=0
-  			elseif (LifHealLevel==nil) then
-  				level=5
-  			else
-  				level=LifHealLevel
-  			end
-  		elseif homuntype==0 then -- It's a vani
-  			skill=HVAN_CHAOTIC
-  			if GetTick() < AutoSkillCooldown[skill] then
-  				level=0
-  			elseif (VaniChaoticLevel==nil) then
-  				level=3
-  			else
-  				level=VaniChaoticLevel
-  			end
-  		end
-    end
+		if (homuntype==1) then -- It's a lif
+			skill=HLIF_HEAL
+			if GetTick() < AutoSkillCooldown[skill] then
+				level=0
+			elseif (LifHealLevel==nil) then
+				level=5
+			else
+				level=LifHealLevel
+			end
+		elseif homuntype==0 then -- It's a vani
+			skill=HVAN_CHAOTIC
+			if GetTick() < AutoSkillCooldown[skill] then
+				level=0
+			elseif (VaniChaoticLevel==nil) then
+				level=3
+			else
+				level=VaniChaoticLevel
+			end
+		end
 	else
 		--currently no merc healing skills
 	end
