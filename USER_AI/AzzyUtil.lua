@@ -1852,7 +1852,7 @@ function GetAtkSkill(myid)
 		else
 			homuntype=modulo(OldHomunType,4)
 		end
-		if (homuntype==0) then -- It's a vani!
+		if (homuntype==0 and UseVaniCaprice) then -- It's a vani!
 			skill=HVAN_CAPRICE
 			if GetTick() < AutoSkillCooldown[skill] then
 				level=0
