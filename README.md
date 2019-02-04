@@ -13,3 +13,4 @@ This AI is going to be edited and developed more of a hobby than a maintenance o
    - Allows people to set MonsterIds to a single tactic group
    - Configurator UI not yet updated for this feature
 - Full Level 10 Skill configurations for all Homunculi
+- Option to not use Vanilmirth's Caprice (this is due to its 2000ms global cooldown in Nova that is preventing other skills from being casted)
