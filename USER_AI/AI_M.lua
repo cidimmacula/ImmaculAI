@@ -23,6 +23,7 @@ pcall(function () dofile( "./AI/USER_AI/Mob_ID.lua") end)
 dofile( "./AI/USER_AI/AI_main.lua")
 dofile( "./AI/USER_AI/M_PVP_Tact.lua")
 dofile( "./AI/USER_AI/M_Extra.lua")
+dofile( "./AI/USER_AI/M_GroupTactics.lua")
 
 
 function WriteStartupLog(Version,ErrorCode,ErrorInfo)
