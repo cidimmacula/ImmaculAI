@@ -20,7 +20,7 @@ LiveMobID                = 0
 
 AttackSkillReserveSP     = 0 
 AutoMobMode              = 2 
-AutoMobCount             = 5
+AutoMobCount             = 10
 AutoComboMode            = 2
 AutoComboSkill		=0
 AutoComboSpheres         = 10
@@ -60,8 +60,8 @@ UseDieterMagmaFlow       = 0
 UseDieterGraniticArmor   = 0
 UseDieterPyroclastic     = 0
 UseEiraOveredBoost       = 0
-HealSelfHP               = 0 
-HealOwnerHP              = 50 
+HealSelfHP               = 5 
+HealOwnerHP              = 80 
 UseAutoHeal              = 1 
 FollowStayBack           = 1
 
