@@ -15,9 +15,9 @@ MyGroupTact[2]={{"Alchemist-class Summons"},
                 {"Parasite (Summon)", "Flora (Summon)", "Hydra (Summon)","Mandragora (Summon)", "Geographer (Summon)","Sera Legion (Hornet)","Sera Legion (Giant)","Sera Legion (Vespa)"},
                 {TACT_REACT_L,SKILL_NEVER,KITE_NEVER,CAST_REACT,PUSH_NEVER,DEBUFF_NEVER,CLASS_BOTH,RESCUE_NEVER,-1,SNIPE_OK,KS_NEVER,1,CHASE_NORMAL}}
 MyGroupTact[3]={{"Farm Tanking"},
-                {1367,1379,1382,1384,1385,1387,1106,1778, 2069, 1166, 1257, 1061},
-                {"Blazer","Nightmare Terror","Diabolic","Deleter S","Deleter G","Gig", "Desert Wolf","Gazeti", "Iara", "Savage", "Injustice", "Nightmare"},
-                {TACT_TANK,SKILL_NEVER,KITE_REACT,CAST_REACT,PUSH_NEVER,DEBUFF_NEVER,CLASS_BOTH,RESCUE_ONWER,-1,SNIPE_OK,KS_POLITE,1,CHASE_NEVER}}
+                {1367,1379,1382,1384,1385,1387,1106,1778, 2069, 1166, 1257, 1061, 2204, 2198, 2201},
+                {"Blazer","Nightmare Terror","Diabolic","Deleter S","Deleter G","Gig", "Desert Wolf","Gazeti", "Iara", "Savage", "Injustice", "Nightmare", "Sedora",  "King Dramoh", "Sropho"},
+                {TACT_TANK,SKILL_NEVER,KITE_REACT,CAST_REACT,PUSH_NEVER,DEBUFF_NEVER,CLASS_BOTH,RESCUE_ONWER,-1,SNIPE_OK,KS_POLITE,1,CHASE_CLEVER}}
 MyGroupTact[4]={{"High Value Target Focus Fire"},
                 {3124,2109,3448, 3450, 3079, 2540, 2189, 2190, 1734, 2110},
                 {"Charleston 3", "Valkyrie Randgris", "Renovated Amdarais", "Bijou", "Despair God Morroc", "Faceworm Egg", "Mutant Coelacanth", "Cruel Coelacanth", "Kiel D-01", "Ifrit"},
