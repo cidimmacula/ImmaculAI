@@ -20,7 +20,7 @@ LiveMobID                = 0
 
 AttackSkillReserveSP     = 0 
 AutoMobMode              = 2 
-AutoMobCount             = 10
+AutoMobCount             = 5
 AutoComboMode            = 2
 AutoComboSkill		=0
 AutoComboSpheres         = 10
