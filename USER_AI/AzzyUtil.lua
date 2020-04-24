@@ -2501,7 +2501,7 @@ function DoSkill(skill,level,target,mode,targx,targy)
 		TraceAI("DoSkill: "..skill.." level:"..level.." target:"..target.." mode:"..targetmode.." delay "..delay)
 	end
 	if skill==MH_MIDNIGHT_FRENZY then
-    MySpheres = math.max(0,MySpheres - 2)
+    MySpheres = math.max(0,MySpheres - 1)
 		ComboSVTimeout=0
 		UpdateTimeoutFile()
 	elseif skill==MH_SILVERVEIN_RUSH then
