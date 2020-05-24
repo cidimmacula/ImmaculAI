@@ -1732,31 +1732,38 @@ function GetSAtkSkill(myid)
 				else
 					level=EiraEraseCutterLevel
 				end
+			elseif htype==BAYERI and UseBayeriHailegeStar==1 then
+        skill=MH_HEILIGE_STANGE
+        if BayeriHailegeStarLevel==nil then
+          level=SkillList[BAYERI][MH_HEILIGE_STANGE ]
+        else
+          level=BayeriHailegeStarLevel
+        end
 			elseif htype==BAYERI and UseBayeriStahlHorn==1 then
 				skill=MH_STAHL_HORN
 				if BayeriStahlHornLevel==nil then
-        level=SkillList[BAYERI][MH_STAHL_HORN ]
+          level=SkillList[BAYERI][MH_STAHL_HORN ]
 				else
 					level=BayeriStahlHornLevel
 				end
 			elseif htype==SERA and UseSeraParalyze==1 then
 				skill=MH_NEEDLE_OF_PARALYZE
 				if SeraParalyzeLevel==nil then
-        level=SkillList[SERA][MH_NEEDLE_OF_PARALYZE ]
+          level=SkillList[SERA][MH_NEEDLE_OF_PARALYZE ]
 				else
 					level=SeraParalyzeLevel
 				end
 			elseif htype==ELEANOR and UseEleanorSonicClaw==1 and ( EleanorMode==0 or EleanorDoNotSwitchMode==1 ) then
 				skill=MH_SONIC_CRAW
 				if EleanorSonicClawLevel==nil then
-        level=SkillList[ELEANOR][MH_SONIC_CRAW ]
+          level=SkillList[ELEANOR][MH_SONIC_CRAW ]
 				else
 					level=EleanorSonicClawLevel
 				end
 			elseif htype==ELEANOR and UseEleanorTinderBreaker==1 and EleanorMode==1 then
 				skill=MH_TINDER_BREAKER
 				if EleanorTinderBreakerLevel==nil then
-        level=SkillList[ELEANOR][MH_TINDER_BREAKER ]
+          level=SkillList[ELEANOR][MH_TINDER_BREAKER ]
 				else
 					level=EleanorTinderBreakerLevel
 				end
@@ -1999,13 +2006,6 @@ function GetMobSkill(myid)
           level=SkillList[EIRA][MH_XENO_SLASHER ]
 				else
 					level=EiraXenoSlasherLevel
-				end
-			elseif htype==BAYERI and UseBayeriHailegeStar==1 then
-				skill=MH_HEILIGE_STANGE
-				if BayeriHailegeStarLevel==nil then
-        level=SkillList[BAYERI][MH_HEILIGE_STANGE ]
-				else
-					level=BayeriHailegeStarLevel
 				end
 			elseif htype==SERA and UseSeraPoisonMist==1 and PoisonMistMode==0 then
 				skill=MH_POISON_MIST
